@@ -9,6 +9,8 @@ import { useNavigation } from "@react-navigation/native";
 
 import axios from "axios";
 
+import {URL} from "@env";
+
 const LoginScreen= () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -19,9 +21,9 @@ const LoginScreen= () => {
 
     const handleClick = async() => {
         try {
-            const response = await axios.post("http://127.0.0.1:8000/usuarios/", {name, email, password});
+            const response = await axios.post(`${URL}/usuarios/`, {name, email, password});
 
-            alert(response.data.msg);
+            alert("Usuario creado exitosamente");
             setName("");
             setEmail("");
             setPassword("");
